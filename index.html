@@ -20,7 +20,14 @@
 
   
   <script>
-    document.getElementById('timer').innerHTML = '00:00:01';
+    var now = new Date();
+    var seconds = now.getSeconds();
+
+    if (seconds < 10){
+      seconds = '0' + seconds;
+    }
+
+    document.getElementById('timer').innerHTML = seconds;
   </script>
 </body>
 </html>
