@@ -20,29 +20,42 @@
 
   
   <script>
-    //ゼロを追加する
-    var addZero = function(value){
-      if (value<10){
-        value = '0' + value;
-      }
-      return value;
-    }
-    
     document.getElementById('start_stop').addEventListener('click',
     function(){
+      var start = new Date();
+      setInterval(goTimer,10);
+    });
+
+    var goTimer = function(){
       var now = new Date();
 
-      var seconds = now.getSeconds(); //秒を取得
-      seconds = addZero(seconds);     //ゼロ関数呼び出し
+      document.getElementById('timer').innerHTML = now.getTime();
+    }
 
-      var minutes = now.getMinutes(); //秒を取得
-      minutes = addZero(minutes);     //ゼロ関数呼び出し
 
-      var hours = now.getHours(); //秒を取得
-      hours = addZero(hours);     //ゼロ関数呼び出し
+    // //ゼロを追加する
+    // var addZero = function(value){
+    //   if (value<10){
+    //     value = '0' + value;
+    //   }
+    //   return value;
+    // }
+    
+    // document.getElementById('start_stop').addEventListener('click',
+    // function(){
+    //   var now = new Date();
 
-      document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
-    });
+    //   var seconds = now.getSeconds(); //秒を取得
+    //   seconds = addZero(seconds);     //ゼロ関数呼び出し
+
+    //   var minutes = now.getMinutes(); //秒を取得
+    //   minutes = addZero(minutes);     //ゼロ関数呼び出し
+
+    //   var hours = now.getHours(); //秒を取得
+    //   hours = addZero(hours);     //ゼロ関数呼び出し
+
+    //   document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+    // });
 
   </script>
 </body>
