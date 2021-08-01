@@ -21,19 +21,32 @@
   
   <script>
     var start;
+    var timer_id;
 
     document.getElementById('start_stop').addEventListener('click',
     function(){
-      start = new Date();
-
+        if(this.innerHTML === 'START'){
+          start = new Date();
+          
+          timer_id = setInterval(goTimer,10);
+          
+          //stopボタンにする
+          this.innerHTML = 'STOP';
+          this.classList.remove('btn-primary');
+          this.classList.add('btn-danger'); 
+        }else { 
+          clearInterval(timer_id);
+          //STARTボタンに戻す
+          this.innerHTML = 'START';
+          this.classList.remove('btn-danger');
+          this.classList.add('btn-primary'); 
+        }
+      });
       
-      setInterval(goTimer,10);
-    });
-    
-    var addZero = function(value){
-      if (value < 10){
-        value = '0' + value;
-      } 
+      var addZero = function(value){
+        if (value < 10){
+          value = '0' + value;
+        } 
       return value;
     }
     
@@ -53,34 +66,7 @@
       seconds = addZero(seconds);
 
       document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
-      //document.getElementById('timer').innerHTML = now.getTime();
     }
-
-
-    // //ゼロを追加する
-    // var addZero = function(value){
-    //   if (value<10){
-    //     value = '0' + value;
-    //   }
-    //   return value;
-    // }
-    
-    // document.getElementById('start_stop').addEventListener('click',
-    // function(){
-    //   var now = new Date();
-
-    //   var seconds = now.getSeconds(); //秒を取得
-    //   seconds = addZero(seconds);     //ゼロ関数呼び出し
-
-    //   var minutes = now.getMinutes(); //秒を取得
-    //   minutes = addZero(minutes);     //ゼロ関数呼び出し
-
-    //   var hours = now.getHours(); //秒を取得
-    //   hours = addZero(hours);     //ゼロ関数呼び出し
-
-    //   document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
-    // });
-
   </script>
 </body>
 </html>
